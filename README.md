@@ -45,3 +45,6 @@ page https://bitonenetwork.net and https://bitone.network.
 
 
 Detailed information about presale at : https://bitonenetwork.net/wp-content/uploads/2018/06/Bitone-node-sale-English.pdf
+
+
+:warning: Contracts of this repository is under development. Check back for updates! :warning:
