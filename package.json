@@ -1,0 +1,34 @@
+{
+  "name": "bitonenetwork_presale",
+  "version": "1.0.0",
+  "description": "The presale contracts for Bitone Network",
+
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "ethereumjs-testrpc": "^6.0.2",
+    "solidity-coverage": "^0.4.0",
+    "temp": "^0.8.3",
+    "truffle": "^4.0.1",
+    "truffle-hdwallet-provider": "0.0.3",
+    "truffle-artifactor": "^3.0.2",
+    "zeppelin-solidity": "git+https://github.com/EthicHub/zeppelin-solidity.git#develop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitonenetwork/presale.git"
+  },
+  "keywords": [
+    "crowdsale",
+    "tokensale",
+    "ico",
+    "solidity",
+    "zeppelin"
+  ],
+  
+  "dependencies": {
+    "moment": "^2.20.1",
+    "web3": "^1.0.0-beta.27"
+  }
+}
