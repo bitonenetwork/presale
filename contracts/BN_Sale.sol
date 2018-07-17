@@ -60,19 +60,21 @@ contract MainSale is Ownable {
 
     mapping(address=>bool) whitelist;
 
-    uint256 public startCloseSale = now; // start // 16.04.2018 10:00 UTC
-    uint256 public endCloseSale = 1532995199; // Monday, 30-Jul-18 23:59:59 UTC
+    uint256 public startCloseSale = now; // start // 1.07.2018 10:00 UTC
+    uint256 public endCloseSale = 1532987999; // Monday, 30-Jul-18 23:59:59 UTC-2
 
-    uint256 public startStage1 = 1532995201; // Tuesday, 31-Jul-18 00:00:01 UTC
-    uint256 public endStage1 = 1533081599; // Tuesday, 31-Jul-18 23:59:59 UTC
+    uint256 public startStage1 = 1532988001; // Tuesday, 31-Jul-18 00:00:01 UTC-2
+    uint256 public endStage1 = 1533074399; // Tuesday, 31-Jul-18 23:59:59 UTC-2
 
-    uint256 public startStage2 = 1533081600; // Wednesday, 01-Aug-18 00:00:00 UTC
-    uint256 public endStage2 = 1533686399; // Tuesday, 07-Aug-18 23:59:59 UTC
+    uint256 public startStage2 = 1533074400; // Wednesday, 01-Aug-18 00:00:00 UTC-2
+    uint256 public endStage2 = 1533679199; // Tuesday, 07-Aug-18 23:59:59 UTC-2
 
-    uint256 public startStage3 = 1533686400; // Wednesday, 08-Aug-18 00:00:00 UTC 
-    uint256 public endStage3 = 1535759999; // Friday, 31-Aug-18 23:59:59 UTC
+    uint256 public startStage3 = 1533679200; // Wednesday, 08-Aug-18 00:00:00 UTC-2 
+    uint256 public endStage3 = 1535752799; // Friday, 31-Aug-18 23:59:59 UTC-2
 
-    uint256 public buyPrice = 10000000000000000; // 0.01 Ether
+    uint256 public buyPrice = 920000000000000000; // 0.92 Ether
+    
+    uint256 public ethUSD;
 
     uint256 public weisRaised = 0;
 
@@ -146,12 +148,18 @@ contract MainSale is Ownable {
         buyPrice = newPrice;
     }
     
+    function setETHUSD(uint256 _ethUSD) public onlyOwner { 
+        ethUSD = _ethUSD;
+    
+    
+    }
+    
     /*******************************************************************************
      * Payable Section
      */
     function ()  public payable {
         
-        require(msg.value >= buyPrice);
+        require(msg.value >= (1*1e18/ethUSD*100));
 
         if (now >= startCloseSale || now <= endCloseSale) {
             require(isWhitelisted(msg.sender));
@@ -222,7 +230,7 @@ contract MainSale is Ownable {
 
         uint256 tokens = _value.mul(1e18).div(buyPrice); // 64 %
 
-        uint256 bonusTokens = tokens.mul(5).div(100); // + 5% за стадию распродажи
+        uint256 bonusTokens = tokens.mul(5).div(100); // + 5% 
         tokens = tokens.add(bonusTokens);
 
         token.transferFromICO(_investor, tokens);
@@ -263,3 +271,4 @@ contract MainSale is Ownable {
     function transferEthFromContract(address _to, uint256 amount) public onlyOwner {
         _to.transfer(amount);
     }
+}
